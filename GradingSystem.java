@@ -1,8 +1,5 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import javax.swing.text.View;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -73,21 +70,33 @@ public class GradingSystem{
                         }
 
                     }
-
                     
                         case 3 -> {
-                        searchStudentRecord(courses, sc);
-                    } 
+                        System.out.println("\n--------Search Student Record--------");
+                        System.out.print("\nEnter Student ID to search: ");
+                        int searchId = sc.nextInt();
+                        boolean found = false;
+
+                        for (Grades g : courses) {
+                        if (g.getStudentId() == searchId) {
+                            System.out.println("\nStudent Record Found:");
+                            g.displayInfo(); 
+                            g.DisplayGrade(); 
+                            found = true;
+                            break;
+                        }
+                    }
+
+                        if (!found) {
+                        System.out.println("No student record found with ID: " + searchId);
+                        }
+                    }
 
 
                     case 4 -> {
-                        System.out.print("\nList of Student Record:\n");
-                        ViewRecords.viewStudRec("StudentRecords.txt");
-                    }
-                    case 5 -> {
                         ExitSystem(choice);
                     }
-                    case 6 -> {
+                    case 5 -> {
                         break;
                     }
                     default -> {
@@ -135,23 +144,5 @@ public class GradingSystem{
         }
     }
 
-    public static void searchStudentRecord(ArrayList<Grades> courses, Scanner sc) {
-        System.out.print("\nEnter Student ID to search: ");
-        int searchId = sc.nextInt();
-        boolean found = false;
 
-        for (Grades g : courses) {
-            if (g.getStudentId() == searchId) {
-                System.out.println("\nStudent Record Found:");
-                g.displayInfo(); 
-                g.DisplayGrade(); 
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
-            System.out.println("No student record found with ID: " + searchId);
-        }
-    }
 }
