@@ -169,7 +169,7 @@ public class GradingSystem{
                 System.out.println("\nAn error occurred: " + e.getMessage() + "\n");
                 sc.nextLine();
             }
-            System.out.print("Do you want to continue? (Y/N): ");
+            System.out.print("Want to try again? (Y/N): ");
             choice = sc.next();
             sc.nextLine();
         }while(choice.equalsIgnoreCase("Yes") || choice.equalsIgnoreCase("Y"));
