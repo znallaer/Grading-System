@@ -25,8 +25,11 @@ public class Grades extends Student{
         this.midexam = new ArrayList<>();
         this.finexam = new ArrayList<>();
 
-        for(int i = 0; i < 1; i++){
+        System.out.print("\nEnter the number of Subjects: ");
+        int num = sc.nextInt();
+        for(int i = 0; i < num; i++){
             System.out.print("\nEnter Subject " + (i + 1) + ": ");
+            sc.nextLine();
             this.subjects.add(sc.nextLine());
             
             while(true){
@@ -101,7 +104,7 @@ public class Grades extends Student{
             overallAverage += Ave;
         }
         overallAverage = overallAverage / Average.size();
-        System.out.println("Overall Grade: " + overallAverage);
+        System.out.printf("Overall Grade: %.2f\n", overallAverage);
     }
 
     //File Write
@@ -113,7 +116,7 @@ public class Grades extends Student{
             output.write("Student ID: " + getStudentId() + "\n");
             output.write("Course: " + getCourse() + "\n");
             output.write("Section: " + getSection() + "\n");
-            output.write("\nSUBJECT \t MIDTERM \t FINAL \t\t AVERAGE");
+            output.write("\nSUBJECT \t\t MIDTERM \t\t FINAL \t\t AVERAGE");
             output.write("\n------------------------------------------------------------\n");
             for(int i = 0; i < subjects.size(); i++){
                 output.write(String.format("%-16s %-15.2f %-15.2f %.2f %n",
@@ -128,7 +131,7 @@ public class Grades extends Student{
             overallAverage += Ave;
         }
         overallAverage = overallAverage / Average.size();
-        output.write("Overall Grade: " + overallAverage + "\n");
+        output.write("\nOverall Grade: " + overallAverage + "\n");
         }catch(IOException e){
             System.out.println("File not SAVED");
         }

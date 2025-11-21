@@ -7,10 +7,4 @@ public class Midterm{
         return MidtermGrade;
     }
 
-    public int getClassstand(){
-        return classstand;
-    }
-    public double getMidexam(){
-        return midexam;
-    }
 }

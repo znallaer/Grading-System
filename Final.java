@@ -6,11 +6,4 @@ public class Final{
         double FinalGrade = (finexam * 0.40) + classstand;
         return FinalGrade;
     }
-
-    public int getClassstand(){
-        return classstand;
-    }
-    public double getFinexam(){
-        return finexam;
-    }
 }
