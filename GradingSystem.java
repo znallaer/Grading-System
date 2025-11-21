@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
-import java.io.*;
 
 
 
@@ -151,9 +150,10 @@ public class GradingSystem{
                             System.out.println("\nDeletion Cancelled.");
                         }
                     }
-                    
                     case 6 -> {
-                        choice = ExitSystem(choice);
+                        System.out.println("\nExiting the Grading System. Goodbye!");
+                        sc.close();
+                        System.exit(0);
                     }
                 
                     default -> {
@@ -169,8 +169,10 @@ public class GradingSystem{
                 System.out.println("\nAn error occurred: " + e.getMessage() + "\n");
                 sc.nextLine();
             }
-        }while(choice.equalsIgnoreCase("No") || choice.equalsIgnoreCase("N"));
-        sc.close();
+            System.out.print("Do you want to continue? (Y/N): ");
+            choice = sc.next();
+            sc.nextLine();
+        }while(choice.equalsIgnoreCase("Yes") || choice.equalsIgnoreCase("Y"));
     }
     
 
@@ -268,24 +270,5 @@ public class GradingSystem{
                 System.out.println("Error reading file: " + e.getMessage());
                 return false;
             }
-        }
-     
-    
-    
-    static String ExitSystem(String choice){
-         Scanner sc = new Scanner(System.in);
-        while(true){    
-            System.out.print("Are you sure you want to exit the system? (Y/N): ");
-                        choice = sc.next();
-                if(choice.equalsIgnoreCase("Y") || choice.equalsIgnoreCase("Yes")){
-                    System.out.println("\nThank you for using the Grading System!");
-                    return "Y";
-                }else if(choice.equalsIgnoreCase("N") || choice.equalsIgnoreCase("No")){
-                    return "N";
-                }else{
-                    System.out.println("\nInvalid input! Please enter Y or N. Please try again\n");
-                    continue;
-                }
-            }
-        }
     }
+}
