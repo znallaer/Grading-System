@@ -32,8 +32,9 @@ public class GradingSystem{
                 System.out.print("1. Add Student Record\n");
                 System.out.print("2. Remove Student Record\n");
                 System.out.print("3. Search Student Record\n");
-                System.out.print("4. View all Student Record\n");
-                System.out.print("5. Exit\n");
+                System.out.print("4. View all Student Records\n");
+                System.out.print("5. Delete all Student Records\n");
+                System.out.print("6. Exit System\n");
                 System.out.print("Enter your choice: ");
                 MenuChoice = sc.nextInt();
 
@@ -95,7 +96,7 @@ public class GradingSystem{
                     }
 
                     case 4 -> {
-                        System.out.print("\n--------View All Student Record--------");
+                        System.out.print("\n--------View All Student Records--------");
                         try (BufferedReader br = new BufferedReader(new FileReader("StudentRecords.txt"))) {
                     String line;
                     boolean empty = true;
@@ -112,13 +113,23 @@ public class GradingSystem{
                             System.out.println("Error reading file: " + e.getMessage());
                     }
                 }
-                        
-                    
-                    case 5 -> {
-                        ExitSystem(choice);
+                      
+                
+                case 5 -> {
+                        System.out.print("\n--------Delete All Student Records--------");
+                        try (BufferedWriter bw = new BufferedWriter(new FileWriter("StudentRecords.txt"))) {
+                            bw.write("");
+                            System.out.println("\nAll student records have been deleted.");
+                        } catch (IOException e) {
+                            System.out.println("Error deleting records: " + e.getMessage());
+                        }
                     }
                     
                     case 6 -> {
+                        ExitSystem(choice);
+                    }
+                    
+                    case 7 -> {
                         break;
                     }
                     default -> {
