@@ -38,8 +38,7 @@ public class Grades extends Student{
                 }else{
                     System.out.println("Invalid grade. Please enter a grade between 0 and 60.");
                 }
-            }
-            while(true){
+            
                 System.out.print("Enter Midterm Exam (0-100): ");
                 double me = sc.nextDouble();
                 if(me >= 0 && me <= 100){
@@ -48,9 +47,7 @@ public class Grades extends Student{
                 }else{
                     System.out.println("Invalid grade. Please enter a grade between 0 and 60.");
                 }
-            }
 
-            while(true){
                 System.out.print("Enter Final Exam (0-100): ");
                 double fe = sc.nextDouble();
                 if(fe >= 0 && fe <= 100){
@@ -101,7 +98,7 @@ public class Grades extends Student{
             overallAverage += Ave;
         }
         overallAverage = overallAverage / Average.size();
-        System.out.print("Overall Grade: " + overallAverage + "\n");
+        System.out.printf("Overall Grade: %.2f%n", overallAverage);
     }
 
     //File Write
@@ -128,7 +125,7 @@ public class Grades extends Student{
             overallAverage += Ave;
         }
         overallAverage = overallAverage / Average.size();
-        output.write("\nOverall Grade: " + overallAverage + "\n");
+        output.write(String.format("Overall Grade: %.2%n", overallAverage));
         }catch(IOException e){
             System.out.println("File not SAVED");
         }
