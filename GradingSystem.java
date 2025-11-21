@@ -95,7 +95,7 @@ public class GradingSystem{
                     }
 
                     case 4 -> {
-                        System.out.print("\nViews of All of Student Record:\n");
+                        System.out.print("\n--------View All Student Record--------");
                         try (BufferedReader br = new BufferedReader(new FileReader("StudentRecords.txt"))) {
                     String line;
                     boolean empty = true;
@@ -106,12 +106,12 @@ public class GradingSystem{
                     if (empty) {
                         System.out.println("No records found in " + "StudentRecords.txt");
                     }
-                } catch (FileNotFoundException e) {
-                    System.out.println("Record file not found: " + e.getMessage());
-                } catch (IOException e) {
-                    System.out.println("Error reading file: " + e.getMessage());
-                        }
+                        } catch (FileNotFoundException e) {
+                            System.out.println("Record file not found: " + e.getMessage());
+                        } catch (IOException e) {
+                            System.out.println("Error reading file: " + e.getMessage());
                     }
+                }
                         
                     
                     case 5 -> {
