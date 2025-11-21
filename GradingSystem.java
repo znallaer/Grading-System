@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
 
@@ -13,6 +14,7 @@ import java.io.BufferedReader;
 
 public class GradingSystem{
 
+    
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         ArrayList<Grades> courses = new ArrayList<>();
@@ -92,11 +94,31 @@ public class GradingSystem{
                         }
                     }
 
-
                     case 4 -> {
+                        System.out.print("\nViews of All of Student Record:\n");
+                        try (BufferedReader br = new BufferedReader(new FileReader("StudentRecords.txt"))) {
+                    String line;
+                    boolean empty = true;
+                    while ((line = br.readLine()) != null) {
+                        System.out.println(line);
+                        empty = false;
+                    }
+                    if (empty) {
+                        System.out.println("No records found in " + "StudentRecords.txt");
+                    }
+                } catch (FileNotFoundException e) {
+                    System.out.println("Record file not found: " + e.getMessage());
+                } catch (IOException e) {
+                    System.out.println("Error reading file: " + e.getMessage());
+                        }
+                    }
+                        
+                    
+                    case 5 -> {
                         ExitSystem(choice);
                     }
-                    case 5 -> {
+                    
+                    case 6 -> {
                         break;
                     }
                     default -> {
